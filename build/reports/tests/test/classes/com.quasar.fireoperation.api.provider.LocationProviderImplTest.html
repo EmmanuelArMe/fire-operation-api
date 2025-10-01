@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - LocationProvider Tests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>LocationProvider Tests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.quasar.fireoperation.api.provider.html">com.quasar.fireoperation.api.provider</a> &gt; LocationProviderImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">13</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.017s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">[1] distances=null, expectedMessage=Se requieren distancias de 3 satélites.</td>
+<td class="success">getLocation_InvalidDistances_ThrowsIllegalArgumentException(List, String)[1]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] distances=[], expectedMessage=Se requieren distancias de 3 satélites.</td>
+<td class="success">getLocation_InvalidDistances_ThrowsIllegalArgumentException(List, String)[2]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[3] distances=[100.0, 115.5], expectedMessage=Se requieren distancias de 3 satélites.</td>
+<td class="success">getLocation_InvalidDistances_ThrowsIllegalArgumentException(List, String)[3]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[4] distances=[100.0, 115.5, 142.7, 200.0], expectedMessage=Se requieren distancias de 3 satélites.</td>
+<td class="success">getLocation_InvalidDistances_ThrowsIllegalArgumentException(List, String)[4]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should throw LocationException when satellites are in invalid configuration</td>
+<td class="success">getLocation_InvalidSatelliteConfiguration_ThrowsLocationException()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should calculate known position correctly</td>
+<td class="success">getLocation_KnownConfiguration_ReturnsExpectedPosition()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should handle negative distances</td>
+<td class="success">getLocation_NegativeDistances_CalculatesLocation()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should calculate consistent results for same input</td>
+<td class="success">getLocation_SameInput_ReturnsConsistentResults()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] distances=[0.0, 0.0, 0.0], description=zero distances</td>
+<td class="success">getLocation_ValidDistances_CalculatesLocation(List, String)[1]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] distances=[0.1, 0.2, 0.3], description=very small distances</td>
+<td class="success">getLocation_ValidDistances_CalculatesLocation(List, String)[2]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[3] distances=[1000.0, 1500.0, 2000.0], description=large distances</td>
+<td class="success">getLocation_ValidDistances_CalculatesLocation(List, String)[3]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[4] distances=[100.12346, 115.78901, 142.34567], description=floating point precision</td>
+<td class="success">getLocation_ValidDistances_CalculatesLocation(List, String)[4]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should calculate correct location with valid distances</td>
+<td class="success">getLocation_ValidDistances_ReturnsCorrectLocation()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2025-10-01T11:59:53.146-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=0.0, y=0.0
+2025-10-01T11:59:53.147-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Distancia inválida detectada: 1000000.0. Las distancias deben estar entre 0 y 100,000
+2025-10-01T11:59:53.148-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Distancia inválida detectada: -100.0. Las distancias deben estar entre 0 y 100,000
+2025-10-01T11:59:53.151-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: null
+2025-10-01T11:59:53.154-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 0
+2025-10-01T11:59:53.156-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 2
+2025-10-01T11:59:53.158-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 4
+2025-10-01T11:59:53.162-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.5, y=1575.0
+2025-10-01T11:59:53.164-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.5, y=1574.9999
+2025-10-01T11:59:53.166-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-956.25, y=-1862.5
+2025-10-01T11:59:53.168-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.4435, y=1557.749
+2025-10-01T11:59:53.169-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+2025-10-01T11:59:53.169-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+2025-10-01T11:59:53.170-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14.3</a> at 1/10/2025, 11:59:54 a. m.</p>
+</div>
+</div>
+</body>
+</html>

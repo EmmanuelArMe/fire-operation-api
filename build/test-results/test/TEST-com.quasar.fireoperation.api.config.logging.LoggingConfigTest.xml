@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LoggingConfig Tests" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.695Z" hostname="02-5CD147CLH7" time="0.128">
+  <properties/>
+  <testcase name="Should handle production profile" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.101"/>
+  <testcase name="Should handle no active profiles" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.005"/>
+  <testcase name="Should handle application ready event with default configuration" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.003"/>
+  <testcase name="Should handle multiple active profiles" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.003"/>
+  <testcase name="Should handle null port" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.005"/>
+  <testcase name="Should handle null context path" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.003"/>
+  <testcase name="Should handle empty context path" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.002"/>
+  <testcase name="Should handle different port" classname="com.quasar.fireoperation.api.config.logging.LoggingConfigTest" time="0.002"/>
+  <system-out><![CDATA[2025-10-01T11:59:50.793-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.793-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080/quasar-fire-operation
+2025-10-01T11:59:50.794-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: prod
+2025-10-01T11:59:50.794-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.795-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.799-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080/quasar-fire-operation
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: default
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.800-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.801-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.801-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.801-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.801-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.803-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080/quasar-fire-operation
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.804-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.807-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.807-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080/quasar-fire-operation
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev, test
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.808-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.812-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:null/quasar-fire-operation
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.813-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:null/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.814-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.814-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.814-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080null
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST null/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST null/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  null/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080null/swagger-ui.html
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.817-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.819-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.819-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080
+2025-10-01T11:59:50.819-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/swagger-ui.html
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.820-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:9090/quasar-fire-operation
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: dev
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /quasar-fire-operation/top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /quasar-fire-operation/top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:9090/quasar-fire-operation/swagger-ui.html
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:50.822-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

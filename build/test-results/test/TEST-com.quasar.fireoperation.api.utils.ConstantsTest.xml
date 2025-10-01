@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Constants Tests" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:54.014Z" hostname="02-5CD147CLH7" time="0.005">
+  <properties/>
+  <testcase name="Should return null for non-existent satellite" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.001"/>
+  <testcase name="Should have correct skywalker position" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.0"/>
+  <testcase name="Should have satellite positions that form valid triangle" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.001"/>
+  <testcase name="Should have immutable satellite positions map" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.001"/>
+  <testcase name="Should be case sensitive for satellite names" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.0"/>
+  <testcase name="Should contain all required satellite positions" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.001"/>
+  <testcase name="Should have correct sato position" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.0"/>
+  <testcase name="Should have correct kenobi position" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.0"/>
+  <testcase name="Should not be instantiable" classname="com.quasar.fireoperation.api.utils.ConstantsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

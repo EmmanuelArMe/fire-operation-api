@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SatelliteConfirmationDTO Tests" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.844Z" hostname="02-5CD147CLH7" time="0.048">
+  <properties/>
+  <testcase name="Should create DTO with constructor" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.0"/>
+  <testcase name="Should handle null satellite name in success method" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.0"/>
+  <testcase name="[1] satelliteName=kenobi, expectedMessage=Información del satélite kenobi guardada exitosamente" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.007"/>
+  <testcase name="[2] satelliteName=skywalker, expectedMessage=Información del satélite skywalker guardada exitosamente" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.001"/>
+  <testcase name="[3] satelliteName=sato, expectedMessage=Información del satélite sato guardada exitosamente" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.001"/>
+  <testcase name="[4] satelliteName=test-satellite_123, expectedMessage=Información del satélite test-satellite_123 guardada exitosamente" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.0"/>
+  <testcase name="Should create DTO with default constructor" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.0"/>
+  <testcase name="Should handle empty satellite name in success method" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.001"/>
+  <testcase name="Should allow setting properties" classname="com.quasar.fireoperation.api.domain.general.SatelliteConfirmationDTOTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

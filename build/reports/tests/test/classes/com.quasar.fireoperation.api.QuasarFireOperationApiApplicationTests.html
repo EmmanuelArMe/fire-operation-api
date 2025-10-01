@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Quasar Fire Operation API Application Tests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Quasar Fire Operation API Application Tests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.quasar.fireoperation.api.html">com.quasar.fireoperation.api</a> &gt; QuasarFireOperationApiApplicationTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.208s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+<li>
+<a href="#">Standard error</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Should start application with test profile</td>
+<td class="success">applicationStartsWithTestProfile()</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Should load Spring application context successfully</td>
+<td class="success">contextLoads()</td>
+<td class="success">1.201s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>11:59:42.159 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests]: QuasarFireOperationApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:59:42.504 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quasar.fireoperation.api.QuasarFireOperationApiApplication for test class com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests
+2025-10-01T11:59:44.614-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : Starting QuasarFireOperationApiApplicationTests using Java 25 with PID 32172 (started by EmmanuelAM in C:\Users\emmanuelam\Downloads\fireoperation.api)
+2025-10-01T11:59:44.617-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : The following 1 profile is active: &quot;test&quot;
+2025-10-01T11:59:49.020-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : Started QuasarFireOperationApiApplicationTests in 5.751 seconds (process running for 10.007)
+2025-10-01T11:59:49.118-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:49.118-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080
+2025-10-01T11:59:49.123-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: test
+2025-10-01T11:59:49.124-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:49.124-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:49.125-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:49.125-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:49.126-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/swagger-ui.html
+2025-10-01T11:59:49.126-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:49.127-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:49.128-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+</pre>
+</span>
+</div>
+<div class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\emmanuelam\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.17.7\fbf3d6d649ed37fc9e9c59480a05be0a26e3c2da\byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14.3</a> at 1/10/2025, 11:59:54 a. m.</p>
+</div>
+</div>
+</body>
+</html>

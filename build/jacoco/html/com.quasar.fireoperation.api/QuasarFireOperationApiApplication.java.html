@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QuasarFireOperationApiApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fireoperation.api</a> &gt; <a href="index.source.html" class="el_package">com.quasar.fireoperation.api</a> &gt; <span class="el_source">QuasarFireOperationApiApplication.java</span></div><h1>QuasarFireOperationApiApplication.java</h1><pre class="source lang-java linenums">package com.quasar.fireoperation.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Main Spring Boot Application class for Quasar Fire Operation API.
+ * This class serves as the entry point for the Spring Boot application.
+ *
+ * @version 1.0
+ * @since 2025
+ * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+ */
+@SpringBootApplication
+<span class="fc" id="L16">@Slf4j</span>
+<span class="fc" id="L17">public class QuasarFireOperationApiApplication {</span>
+
+    /**
+     * Main method to start the Spring Boot application.
+     *
+     * @param args command line arguments
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    public static void main(String[] args) {
+<span class="nc" id="L27">        log.info(&quot;Iniciando Quasar Fire Operation API...&quot;);</span>
+<span class="nc" id="L28">        log.info(&quot;Configurando red de satélites rebeldes (Kenobi, Skywalker, Sato)&quot;);</span>
+
+        try {
+<span class="nc" id="L31">            SpringApplication.run(QuasarFireOperationApiApplication.class, args);</span>
+<span class="nc" id="L32">            log.info(&quot;Quasar Fire Operation API iniciada exitosamente&quot;);</span>
+<span class="nc" id="L33">            log.info(&quot;Sistema listo para operaciones de rescate espacial&quot;);</span>
+<span class="nc" id="L34">        } catch (Exception ex) {</span>
+<span class="nc" id="L35">            log.error(&quot;Error crítico al iniciar la aplicación: {}&quot;, ex.getMessage(), ex);</span>
+<span class="nc" id="L36">            System.exit(1);</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

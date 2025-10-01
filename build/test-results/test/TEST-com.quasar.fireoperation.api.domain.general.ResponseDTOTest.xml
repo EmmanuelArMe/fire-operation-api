@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ResponseDTO Tests" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.837Z" hostname="02-5CD147CLH7" time="0.005">
+  <properties/>
+  <testcase name="Should handle special characters in message" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.0"/>
+  <testcase name="Should handle null position" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.001"/>
+  <testcase name="Should handle null message" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.001"/>
+  <testcase name="Should handle empty message" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.001"/>
+  <testcase name="Should handle very long message" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.001"/>
+  <testcase name="Should create response with position and message" classname="com.quasar.fireoperation.api.domain.general.ResponseDTOTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

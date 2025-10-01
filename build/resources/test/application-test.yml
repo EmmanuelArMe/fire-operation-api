@@ -1,0 +1,17 @@
+# Configuración específica para el perfil de testing
+logging:
+  level:
+    root: WARN
+    com.quasar.fireoperation.api: INFO
+    org.springframework.boot: WARN
+    org.springframework.web: WARN
+
+# Deshabilitar endpoints de management en testing
+management:
+  endpoints:
+    enabled-by-default: false
+
+# Configuración mínima para tests
+spring:
+  main:
+    banner-mode: off

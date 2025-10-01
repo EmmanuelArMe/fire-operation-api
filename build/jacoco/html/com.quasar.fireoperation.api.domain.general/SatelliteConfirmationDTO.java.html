@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SatelliteConfirmationDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fireoperation.api</a> &gt; <a href="index.source.html" class="el_package">com.quasar.fireoperation.api.domain.general</a> &gt; <span class="el_source">SatelliteConfirmationDTO.java</span></div><h1>SatelliteConfirmationDTO.java</h1><pre class="source lang-java linenums">package com.quasar.fireoperation.api.domain.general;
+
+import lombok.*;
+
+/**
+ * Response DTO for satellite split POST confirmation.
+ * &lt;p&gt;
+ * This class represents the response returned when satellite information
+ * is successfully stored in the split operation mode.
+ * &lt;/p&gt;
+ *
+ * @version 1.0
+ * @since 2025
+ * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+ */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
+public class SatelliteConfirmationDTO {
+
+    private String message;
+    private String satelliteName;
+    private String instructions;
+
+    /**
+     * Factory method to create a successful satellite confirmation.
+     *
+     * @param satelliteName name of the satellite
+     * @return confirmation DTO with success message
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    public static SatelliteConfirmationDTO success(String satelliteName) {
+<span class="fc" id="L35">        return new SatelliteConfirmationDTO(</span>
+            &quot;Información del satélite &quot; + satelliteName + &quot; guardada exitosamente&quot;,
+            satelliteName,
+            &quot;Los datos han sido almacenados. Envía información de los 3 satélites para obtener la ubicación.&quot;
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

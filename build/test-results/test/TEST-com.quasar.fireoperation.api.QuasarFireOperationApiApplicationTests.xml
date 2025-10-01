@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Quasar Fire Operation API Application Tests" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:49.152Z" hostname="02-5CD147CLH7" time="1.21">
+  <properties/>
+  <testcase name="Should load Spring application context successfully" classname="com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests" time="1.201"/>
+  <testcase name="Should start application with test profile" classname="com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests" time="0.007"/>
+  <system-out><![CDATA[11:59:42.159 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests]: QuasarFireOperationApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:59:42.504 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quasar.fireoperation.api.QuasarFireOperationApiApplication for test class com.quasar.fireoperation.api.QuasarFireOperationApiApplicationTests
+2025-10-01T11:59:44.614-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : Starting QuasarFireOperationApiApplicationTests using Java 25 with PID 32172 (started by EmmanuelAM in C:\Users\emmanuelam\Downloads\fireoperation.api)
+2025-10-01T11:59:44.617-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : The following 1 profile is active: "test"
+2025-10-01T11:59:49.020-05:00  INFO 32172 --- [    Test worker] a.QuasarFireOperationApiApplicationTests : Started QuasarFireOperationApiApplicationTests in 5.751 seconds (process running for 10.007)
+2025-10-01T11:59:49.118-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ========== QUASAR FIRE OPERATION API - SISTEMA LISTO ==========
+2025-10-01T11:59:49.118-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Servidor ejecutándose en: http://localhost:8080
+2025-10-01T11:59:49.123-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Perfiles activos: test
+2025-10-01T11:59:49.124-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Endpoints disponibles:
+2025-10-01T11:59:49.124-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret - Procesamiento simultáneo de 3 satélites
+2025-10-01T11:59:49.125-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : POST /top-secret-split/{{satellite}} - Procesamiento individual
+2025-10-01T11:59:49.125-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : GET  /top-secret-split - Obtener resultado procesado
+2025-10-01T11:59:49.126-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Documentación Swagger: http://localhost:8080/swagger-ui.html
+2025-10-01T11:59:49.126-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : Satélites configurados: Kenobi (-500,-200), Skywalker (100,-100), Sato (500,100)
+2025-10-01T11:59:49.127-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ¡Que la fuerza te acompañe en las operaciones de rescate!
+2025-10-01T11:59:49.128-05:00  INFO 32172 --- [    Test worker] c.q.f.api.config.logging.LoggingConfig   : ================================================================
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\emmanuelam\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.17.7\fbf3d6d649ed37fc9e9c59480a05be0a26e3c2da\byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

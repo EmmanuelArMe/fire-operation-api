@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LocationException Tests" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.923Z" hostname="02-5CD147CLH7" time="0.003">
+  <properties/>
+  <testcase name="Should be instance of RuntimeException" classname="com.quasar.fireoperation.api.exception.LocationExceptionTest" time="0.001"/>
+  <testcase name="Should create exception with empty message" classname="com.quasar.fireoperation.api.exception.LocationExceptionTest" time="0.0"/>
+  <testcase name="Should create exception with null message" classname="com.quasar.fireoperation.api.exception.LocationExceptionTest" time="0.0"/>
+  <testcase name="Should create exception with message" classname="com.quasar.fireoperation.api.exception.LocationExceptionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

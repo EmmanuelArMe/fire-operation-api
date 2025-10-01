@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MessageService Tests" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.378Z" hostname="02-5CD147CLH7" time="0.315">
+  <properties/>
+  <testcase name="Should save satellite split data successfully" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.223"/>
+  <testcase name="Should handle different message array lengths" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.037"/>
+  <testcase name="Should handle satellite names case insensitively" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.005"/>
+  <testcase name="Should process TopSecret request successfully" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.011"/>
+  <testcase name="Should throw LocationException when position calculation fails" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.019"/>
+  <testcase name="Should process TopSecretSplit successfully with 3 satellites" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.003"/>
+  <testcase name="Should clear satellites cache after successful split processing" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.003"/>
+  <testcase name="Should reconstruct partial messages correctly" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.003"/>
+  <testcase name="Should throw MessageException when message reconstruction fails" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.002"/>
+  <testcase name="Should throw LocationException when insufficient satellites for split processing" classname="com.quasar.fireoperation.api.business.MessageServiceImplTest" time="0.002"/>
+  <system-out><![CDATA[2025-10-01T11:59:50.595-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: kenobi con distancia: 100.0
+2025-10-01T11:59:50.596-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 1
+2025-10-01T11:59:50.630-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando solicitud TopSecret con 3 satélites
+2025-10-01T11:59:50.637-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecret procesado exitosamente. Posición: (0.0, 0.0), Mensaje: 'este es mensaje completo'
+2025-10-01T11:59:50.642-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: KENOBI con distancia: 100.0
+2025-10-01T11:59:50.643-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 1
+2025-10-01T11:59:50.643-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: skywalker con distancia: 115.5
+2025-10-01T11:59:50.643-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 2
+2025-10-01T11:59:50.643-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: Sato con distancia: 142.7
+2025-10-01T11:59:50.643-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 3
+2025-10-01T11:59:50.644-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando TopSecretSplit con 3 satélites almacenados
+2025-10-01T11:59:50.645-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecretSplit procesado exitosamente. Limpiando caché de satélites.
+2025-10-01T11:59:50.647-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando solicitud TopSecret con 3 satélites
+2025-10-01T11:59:50.647-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecret procesado exitosamente. Posición: (-58.31, -69.55), Mensaje: 'este es un mensaje secreto'
+2025-10-01T11:59:50.661-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando solicitud TopSecret con 3 satélites
+2025-10-01T11:59:50.662-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Error al calcular la posición: Position calculation error
+
+java.lang.RuntimeException: Position calculation error
+	at com.quasar.fireoperation.api.business.MessageBusinessImpl.getResponseDTO(MessageBusinessImpl.java:74) ~[main/:na]
+	at com.quasar.fireoperation.api.business.MessageBusinessImpl.processTopSecret(MessageBusinessImpl.java:52) ~[main/:na]
+	at com.quasar.fireoperation.api.business.MessageServiceImplTest.lambda$processTopSecret_LocationCalculationFails_ThrowsLocationException$0(MessageServiceImplTest.java:80) ~[test/:na]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53) ~[junit-jupiter-api-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35) ~[junit-jupiter-api-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128) ~[junit-jupiter-api-5.12.2.jar:5.12.2]
+	at com.quasar.fireoperation.api.business.MessageServiceImplTest.processTopSecret_LocationCalculationFails_ThrowsLocationException(MessageServiceImplTest.java:79) ~[test/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775) ~[junit-platform-commons-1.12.2.jar:1.12.2]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479) ~[junit-platform-commons-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92) ~[na:na]
+	at jdk.proxy2/jdk.proxy2.$Proxy6.stop(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63) ~[na:na]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72) ~[na:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
+
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: kenobi con distancia: 100.0
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 1
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: skywalker con distancia: 115.5
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 2
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: sato con distancia: 142.7
+2025-10-01T11:59:50.679-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 3
+2025-10-01T11:59:50.680-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando TopSecretSplit con 3 satélites almacenados
+2025-10-01T11:59:50.680-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecretSplit procesado exitosamente. Limpiando caché de satélites.
+2025-10-01T11:59:50.682-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: kenobi con distancia: 100.0
+2025-10-01T11:59:50.682-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 1
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: skywalker con distancia: 115.5
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 2
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: sato con distancia: 142.7
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 3
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando TopSecretSplit con 3 satélites almacenados
+2025-10-01T11:59:50.683-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecretSplit procesado exitosamente. Limpiando caché de satélites.
+2025-10-01T11:59:50.684-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando TopSecretSplit con 0 satélites almacenados
+2025-10-01T11:59:50.684-05:00  WARN 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información insuficiente de satélites. Requeridos: 3, Disponibles: 0
+2025-10-01T11:59:50.686-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando solicitud TopSecret con 3 satélites
+2025-10-01T11:59:50.687-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : TopSecret procesado exitosamente. Posición: (0.0, 0.0), Mensaje: 'un mensaje secreto'
+2025-10-01T11:59:50.690-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando solicitud TopSecret con 3 satélites
+2025-10-01T11:59:50.690-05:00  WARN 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : No se pudo reconstruir el mensaje. Arrays recibidos: [[, , ], [, , ], [, , ]]
+2025-10-01T11:59:50.692-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: kenobi con distancia: 100.0
+2025-10-01T11:59:50.692-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 1
+2025-10-01T11:59:50.692-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Guardando información del satélite: skywalker con distancia: 115.5
+2025-10-01T11:59:50.692-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información guardada. Total de satélites almacenados: 2
+2025-10-01T11:59:50.692-05:00  INFO 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Procesando TopSecretSplit con 2 satélites almacenados
+2025-10-01T11:59:50.693-05:00  WARN 32172 --- [    Test worker] c.q.f.api.business.MessageBusinessImpl   : Información insuficiente de satélites. Requeridos: 3, Disponibles: 2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

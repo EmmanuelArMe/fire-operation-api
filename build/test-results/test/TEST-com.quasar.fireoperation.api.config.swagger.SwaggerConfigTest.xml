@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SwaggerConfig Tests" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:50.824Z" hostname="02-5CD147CLH7" time="0.006">
+  <properties/>
+  <testcase name="Should have API description" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.001"/>
+  <testcase name="Should have correct API version" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.0"/>
+  <testcase name="Should create OpenAPI configuration" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.0"/>
+  <testcase name="Should contain key features in description" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.0"/>
+  <testcase name="Should have Star Wars themed description" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.001"/>
+  <testcase name="Should have contact information" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.0"/>
+  <testcase name="Should contain mission objectives in description" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.001"/>
+  <testcase name="Should have correct API title" classname="com.quasar.fireoperation.api.config.swagger.SwaggerConfigTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

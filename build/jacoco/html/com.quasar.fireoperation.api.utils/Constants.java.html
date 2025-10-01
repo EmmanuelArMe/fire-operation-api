@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Constants.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fireoperation.api</a> &gt; <a href="index.source.html" class="el_package">com.quasar.fireoperation.api.utils</a> &gt; <span class="el_source">Constants.java</span></div><h1>Constants.java</h1><pre class="source lang-java linenums">package com.quasar.fireoperation.api.utils;
+
+import java.util.Map;
+import java.util.HashMap;
+
+/**
+ * Utility class holding satellite positions and constants.
+ * &lt;p&gt;
+ * This class contains the fixed positions of the rebel satellites
+ * used in the trilateration algorithm for spacecraft location.
+ * &lt;/p&gt;
+ *
+ * @version 1.0
+ * @since 2025
+ * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+ */
+public final class Constants {
+
+    /**
+     * Map containing the fixed positions of rebel satellites.
+     * - Kenobi: (-500, -200)
+     * - Skywalker: (100, -100)
+     * - Sato: (500, 100)
+     *
+     * @see &lt;a href=&quot;https://en.wikipedia.org/wiki/Trilateration&quot;&gt;Trilateration&lt;/a&gt;
+     * @since 2025
+     * @autor Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    public static final Map&lt;String, float[]&gt; SATELLITE_POSITIONS;
+
+    static {
+<span class="fc" id="L32">        Map&lt;String, float[]&gt; positions = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L33">        positions.put(&quot;kenobi&quot;, new float[]{-500, -200});</span>
+<span class="fc" id="L34">        positions.put(&quot;skywalker&quot;, new float[]{100, -100});</span>
+<span class="fc" id="L35">        positions.put(&quot;sato&quot;, new float[]{500, 100});</span>
+<span class="fc" id="L36">        SATELLITE_POSITIONS = Map.copyOf(positions);</span>
+<span class="fc" id="L37">    }</span>
+
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     *
+     * @throws UnsupportedOperationException if instantiation is attempted.
+     * @since 2025
+     * @autor Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+<span class="fc" id="L46">    private Constants() {</span>
+<span class="fc" id="L47">        throw new UnsupportedOperationException(&quot;This is a utility class and cannot be instantiated&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

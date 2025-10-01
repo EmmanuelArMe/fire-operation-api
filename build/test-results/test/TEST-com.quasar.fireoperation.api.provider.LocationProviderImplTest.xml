@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LocationProvider Tests" tests="13" skipped="0" failures="0" errors="0" timestamp="2025-10-01T16:59:53.145Z" hostname="02-5CD147CLH7" time="0.025">
+  <properties/>
+  <testcase name="Should calculate known position correctly" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="Should throw LocationException when satellites are in invalid configuration" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="Should handle negative distances" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="[1] distances=null, expectedMessage=Se requieren distancias de 3 satélites." classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.002"/>
+  <testcase name="[2] distances=[], expectedMessage=Se requieren distancias de 3 satélites." classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.002"/>
+  <testcase name="[3] distances=[100.0, 115.5], expectedMessage=Se requieren distancias de 3 satélites." classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.002"/>
+  <testcase name="[4] distances=[100.0, 115.5, 142.7, 200.0], expectedMessage=Se requieren distancias de 3 satélites." classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.002"/>
+  <testcase name="[1] distances=[0.0, 0.0, 0.0], description=zero distances" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="[2] distances=[0.1, 0.2, 0.3], description=very small distances" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="[3] distances=[1000.0, 1500.0, 2000.0], description=large distances" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="[4] distances=[100.12346, 115.78901, 142.34567], description=floating point precision" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="Should calculate consistent results for same input" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <testcase name="Should calculate correct location with valid distances" classname="com.quasar.fireoperation.api.provider.LocationProviderImplTest" time="0.001"/>
+  <system-out><![CDATA[2025-10-01T11:59:53.146-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=0.0, y=0.0
+2025-10-01T11:59:53.147-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Distancia inválida detectada: 1000000.0. Las distancias deben estar entre 0 y 100,000
+2025-10-01T11:59:53.148-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Distancia inválida detectada: -100.0. Las distancias deben estar entre 0 y 100,000
+2025-10-01T11:59:53.151-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: null
+2025-10-01T11:59:53.154-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 0
+2025-10-01T11:59:53.156-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 2
+2025-10-01T11:59:53.158-05:00 ERROR 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Número inválido de distancias recibidas. Esperadas: 3, Recibidas: 4
+2025-10-01T11:59:53.162-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.5, y=1575.0
+2025-10-01T11:59:53.164-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.5, y=1574.9999
+2025-10-01T11:59:53.166-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-956.25, y=-1862.5
+2025-10-01T11:59:53.168-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.4435, y=1557.749
+2025-10-01T11:59:53.169-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+2025-10-01T11:59:53.169-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+2025-10-01T11:59:53.170-05:00  INFO 32172 --- [    Test worker] c.q.f.api.provider.LocationProviderImpl  : Ubicación calculada exitosamente: x=-487.2859, y=1557.0142
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

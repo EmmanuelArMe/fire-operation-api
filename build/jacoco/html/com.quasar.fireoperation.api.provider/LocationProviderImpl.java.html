@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocationProviderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fireoperation.api</a> &gt; <a href="index.source.html" class="el_package">com.quasar.fireoperation.api.provider</a> &gt; <span class="el_source">LocationProviderImpl.java</span></div><h1>LocationProviderImpl.java</h1><pre class="source lang-java linenums">package com.quasar.fireoperation.api.provider;
+
+import com.quasar.fireoperation.api.exception.LocationException;
+import com.quasar.fireoperation.api.utils.Constants;
+import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Implementation of LocationProvider using trilateration.
+ *
+ * @version 1.0
+ * @since 2025
+ * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+ */
+@Component
+<span class="fc" id="L18">@Slf4j</span>
+<span class="fc" id="L19">public class LocationProviderImpl implements LocationProvider {</span>
+
+    /**
+     * Calculates the (x, y) location based on distances from three satellites.
+     *
+     * @param distances List of distances from the satellites [d1, d2, d3]
+     * @return float array with the calculated coordinates [x, y]
+     * @throws LocationException if the location cannot be determined
+     * @see &lt;a href=&quot;https://en.wikipedia.org/wiki/Trilateration&quot;&gt;Trilateration&lt;/a&gt;
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    @Override
+    public float[] getLocation(List&lt;Float&gt; distances) throws LocationException {
+<span class="fc" id="L33">        log.debug(&quot;Iniciando cálculo de trilateración con distancias: {}&quot;, distances);</span>
+
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (distances == null || distances.size() != 3) {</span>
+<span class="fc" id="L36">            log.error(&quot;Número inválido de distancias recibidas. Esperadas: 3, Recibidas: {}&quot;,</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                     distances != null ? distances.size() : &quot;null&quot;);</span>
+<span class="fc" id="L38">            throw new IllegalArgumentException(&quot;Se requieren distancias de 3 satélites.&quot;);</span>
+        }
+
+        // Validar que las distancias sean razonables
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (Float distance : distances) {</span>
+<span class="pc bpc" id="L43" title="1 of 6 branches missed.">            if (distance == null || distance &lt; 0 || distance &gt; 100000.0f) {</span>
+<span class="fc" id="L44">                log.error(&quot;Distancia inválida detectada: {}. Las distancias deben estar entre 0 y 100,000&quot;, distance);</span>
+<span class="fc" id="L45">                throw new LocationException(&quot;Distancias fuera del rango válido para trilateración&quot;);</span>
+            }
+<span class="fc" id="L47">        }</span>
+
+        // Satellite positions
+<span class="fc" id="L50">        float[] p1 = Constants.SATELLITE_POSITIONS.get(&quot;kenobi&quot;);</span>
+<span class="fc" id="L51">        float[] p2 = Constants.SATELLITE_POSITIONS.get(&quot;skywalker&quot;);</span>
+<span class="fc" id="L52">        float[] p3 = Constants.SATELLITE_POSITIONS.get(&quot;sato&quot;);</span>
+
+<span class="fc" id="L54">        log.debug(&quot;Posiciones de satélites - Kenobi: {}, Skywalker: {}, Sato: {}&quot;,</span>
+<span class="fc" id="L55">                 Arrays.toString(p1), Arrays.toString(p2), Arrays.toString(p3));</span>
+
+<span class="fc" id="L57">        float d1 = distances.get(0);</span>
+<span class="fc" id="L58">        float d2 = distances.get(1);</span>
+<span class="fc" id="L59">        float d3 = distances.get(2);</span>
+
+<span class="fc" id="L61">        log.debug(&quot;Distancias asignadas - d1: {}, d2: {}, d3: {}&quot;, d1, d2, d3);</span>
+
+        // Algorithm coefficients calculation based on trilateration formulas
+<span class="fc" id="L64">        float[] coefficients1 = calculateLinearCoefficients(p2, p1);</span>
+<span class="fc" id="L65">        float coefficientA = coefficients1[0];</span>
+<span class="fc" id="L66">        float coefficientB = coefficients1[1];</span>
+<span class="fc" id="L67">        float constantC = calculateTriangulationConstant(d1, d2, p1, p2);</span>
+
+<span class="fc" id="L69">        float[] coefficients2 = calculateLinearCoefficients(p3, p2);</span>
+<span class="fc" id="L70">        float coefficientD = coefficients2[0];</span>
+<span class="fc" id="L71">        float coefficientE = coefficients2[1];</span>
+<span class="fc" id="L72">        float constantF = calculateTriangulationConstant(d2, d3, p2, p3);</span>
+
+<span class="fc" id="L74">        log.debug(&quot;Coeficientes calculados - A: {}, B: {}, C: {}, D: {}, E: {}, F: {}&quot;,</span>
+<span class="fc" id="L75">                 coefficientA, coefficientB, constantC, coefficientD, coefficientE, constantF);</span>
+
+<span class="fc" id="L77">        float denominator = coefficientA * coefficientE - coefficientD * coefficientB;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (Math.abs(denominator) &lt; 1e-10) {</span>
+<span class="nc" id="L79">            log.error(&quot;Determinante muy pequeño o cero: {}. No se puede resolver el sistema de ecuaciones&quot;, denominator);</span>
+<span class="nc" id="L80">            throw new LocationException(&quot;Configuración de satélites inválida para trilateración&quot;);</span>
+        }
+
+<span class="fc" id="L83">        float x = (constantC * coefficientE - constantF * coefficientB) / denominator;</span>
+<span class="fc" id="L84">        float y = (coefficientA * constantF - coefficientD * constantC) / denominator;</span>
+
+        // Validar que la posición calculada sea razonable
+<span class="pc bpc" id="L87" title="4 of 8 branches missed.">        if (Float.isNaN(x) || Float.isNaN(y) || Float.isInfinite(x) || Float.isInfinite(y)) {</span>
+<span class="nc" id="L88">            log.error(&quot;Posición calculada inválida: x={}, y={}&quot;, x, y);</span>
+<span class="nc" id="L89">            throw new LocationException(&quot;No se pudo determinar una posición válida&quot;);</span>
+        }
+
+        // Validar que la posición esté dentro de un rango razonable
+<span class="pc bpc" id="L93" title="2 of 4 branches missed.">        if (Math.abs(x) &gt; 50000 || Math.abs(y) &gt; 50000) {</span>
+<span class="nc" id="L94">            log.error(&quot;Posición calculada fuera del rango válido: x={}, y={}&quot;, x, y);</span>
+<span class="nc" id="L95">            throw new LocationException(&quot;Posición calculada fuera del área de cobertura&quot;);</span>
+        }
+
+<span class="fc" id="L98">        log.info(&quot;Ubicación calculada exitosamente: x={}, y={}&quot;, x, y);</span>
+<span class="fc" id="L99">        return new float[]{x, y};</span>
+    }
+
+    /**
+     * Calcula los coeficientes lineales para el algoritmo de trilateración.
+     *
+     * @param point1 coordenadas del primer punto [x, y]
+     * @param point2 coordenadas del segundo punto [x, y]
+     * @return array con los coeficientes [A, B] donde A = 2*(x1-x2) y B = 2*(y1-y2)
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    private float[] calculateLinearCoefficients(float[] point1, float[] point2) {
+<span class="fc" id="L112">        float coefficientA = 2 * (point1[0] - point2[0]);</span>
+<span class="fc" id="L113">        float coefficientB = 2 * (point1[1] - point2[1]);</span>
+
+<span class="fc" id="L115">        log.trace(&quot;Coeficientes lineales calculados para puntos {} y {}: A={}, B={}&quot;,</span>
+<span class="fc" id="L116">                 Arrays.toString(point1), Arrays.toString(point2), coefficientA, coefficientB);</span>
+
+<span class="fc" id="L118">        return new float[]{coefficientA, coefficientB};</span>
+    }
+
+    /**
+     * Calcula la constante de trilateración para dos puntos y sus distancias.
+     *
+     * @param d1 distancia del primer punto
+     * @param d2 distancia del segundo punto
+     * @param p1 coordenadas del primer punto [x, y]
+     * @param p2 coordenadas del segundo punto [x, y]
+     * @return constante calculada para el algoritmo de trilateración
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    private float calculateTriangulationConstant(float d1, float d2, float[] p1, float[] p2) {
+<span class="fc" id="L133">        float constant = d1*d1 - d2*d2 - p1[0]*p1[0] + p2[0]*p2[0] - p1[1]*p1[1] + p2[1]*p2[1];</span>
+
+<span class="fc" id="L135">        log.trace(&quot;Constante de trilateración calculada para d1={}, d2={}, p1={}, p2={}: {}&quot;,</span>
+<span class="fc" id="L136">                 d1, d2, Arrays.toString(p1), Arrays.toString(p2), constant);</span>
+
+<span class="fc" id="L138">        return constant;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessageBusinessImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fireoperation.api</a> &gt; <a href="index.source.html" class="el_package">com.quasar.fireoperation.api.business</a> &gt; <span class="el_source">MessageBusinessImpl.java</span></div><h1>MessageBusinessImpl.java</h1><pre class="source lang-java linenums">package com.quasar.fireoperation.api.business;
+
+import com.quasar.fireoperation.api.domain.general.*;
+import com.quasar.fireoperation.api.exception.*;
+import com.quasar.fireoperation.api.provider.LocationProvider;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Implementation of MessageService.
+ *
+ * @version 1.0
+ * @since 2025
+ * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+ */
+@Service
+@RequiredArgsConstructor
+<span class="fc" id="L23">@Slf4j</span>
+@FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
+public class MessageBusinessImpl implements MessageBusiness {
+
+    LocationProvider locationProvider;
+    // For split requests (Nivel 3)
+    private final Map&lt;String, SatelliteDTO&gt; splitSatellites = new ConcurrentHashMap&lt;&gt;();
+
+    /**
+     * Processes the TopSecret request to determine position and message.
+     * @param request The TopSecretRequestDTO containing satellite data.
+     * @return The ResponseDTO with calculated position and message.
+     * @throws LocationException if position cannot be determined.
+     * @throws MessageException if message cannot be reconstructed.
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    @Override
+    public ResponseDTO processTopSecret(TopSecretRequestDTO request) {
+<span class="fc" id="L42">        log.info(&quot;Procesando solicitud TopSecret con {} satélites&quot;, request.getSatellites().size());</span>
+<span class="fc" id="L43">        log.debug(&quot;Datos de satélites recibidos: {}&quot;, request.getSatellites());</span>
+
+<span class="fc" id="L45">        List&lt;Float&gt; distances = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">        List&lt;List&lt;String&gt;&gt; messages = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        for (SatelliteDTO sat : request.getSatellites()) {</span>
+<span class="fc" id="L48">            distances.add(sat.getDistance());</span>
+<span class="fc" id="L49">            messages.add(sat.getMessage());</span>
+<span class="fc" id="L50">        }</span>
+
+<span class="fc" id="L52">        ResponseDTO response = getResponseDTO(distances, messages);</span>
+<span class="fc" id="L53">        log.info(&quot;TopSecret procesado exitosamente. Posición: ({}, {}), Mensaje: '{}'&quot;,</span>
+<span class="fc" id="L54">                response.getPosition().getX(), response.getPosition().getY(), response.getMessage());</span>
+
+<span class="fc" id="L56">        return response;</span>
+    }
+
+    /**
+     * Helper method to calculate position and reconstruct message.
+     * @param distances List of distances from satellites.
+     * @param messages List of message arrays from satellites.
+     * @return The ResponseDTO with calculated position and reconstructed message.
+     * @throws LocationException if position cannot be determined.
+     * @throws MessageException if message cannot be reconstructed.
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    private ResponseDTO getResponseDTO(List&lt;Float&gt; distances, List&lt;List&lt;String&gt;&gt; messages) {
+<span class="fc" id="L70">        log.debug(&quot;Calculando posición con distancias: {}&quot;, distances);</span>
+
+        float[] positionArr;
+        try {
+<span class="fc" id="L74">            positionArr = locationProvider.getLocation(distances);</span>
+<span class="fc" id="L75">            log.debug(&quot;Posición calculada exitosamente: ({}, {})&quot;, positionArr[0], positionArr[1]);</span>
+<span class="fc" id="L76">        } catch (IllegalArgumentException ex) {</span>
+<span class="fc" id="L77">            log.error(&quot;Error al calcular la posición: {}&quot;, ex.getMessage(), ex);</span>
+<span class="fc" id="L78">            throw ex;</span>
+<span class="fc" id="L79">        } catch (Exception ex) {</span>
+<span class="fc" id="L80">            log.error(&quot;Error al calcular la posición: {}&quot;, ex.getMessage(), ex);</span>
+<span class="fc" id="L81">            throw new LocationException(&quot;No se pudo determinar la posición.&quot;);</span>
+<span class="fc" id="L82">        }</span>
+
+<span class="fc" id="L84">        log.debug(&quot;Reconstruyendo mensaje desde {} arrays de mensajes&quot;, messages.size());</span>
+<span class="fc" id="L85">        String message = getMessage(messages);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (message.isBlank()) {</span>
+<span class="fc" id="L87">            log.warn(&quot;No se pudo reconstruir el mensaje. Arrays recibidos: {}&quot;, messages);</span>
+<span class="fc" id="L88">            throw new MessageException(&quot;No se pudo determinar el mensaje.&quot;);</span>
+        }
+
+<span class="fc" id="L91">        log.debug(&quot;Mensaje reconstruido exitosamente: '{}'&quot;, message);</span>
+<span class="fc" id="L92">        return new ResponseDTO(new PositionDTO(positionArr[0], positionArr[1]), message);</span>
+    }
+
+    /**
+     * Saves satellite data for split requests (Nivel 3).
+     * @param name The name of the satellite.
+     * @param distance The distance from the satellite.
+     * @param message The message array from the satellite.
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    @Override
+    public void saveSatelliteSplit(String name, float distance, List&lt;String&gt; message) {
+<span class="fc" id="L105">        log.info(&quot;Guardando información del satélite: {} con distancia: {}&quot;, name, distance);</span>
+<span class="fc" id="L106">        log.debug(&quot;Mensaje del satélite {}: {}&quot;, name, message);</span>
+
+<span class="fc" id="L108">        splitSatellites.put(name.toLowerCase(), new SatelliteDTO(name, distance, message));</span>
+
+<span class="fc" id="L110">        log.info(&quot;Información guardada. Total de satélites almacenados: {}&quot;, splitSatellites.size());</span>
+<span class="fc" id="L111">        log.debug(&quot;Satélites actuales en memoria: {}&quot;, splitSatellites.keySet());</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * Processes the TopSecretSplit request to determine position and message
+     * after receiving data from all satellites.
+     * @return The ResponseDTO with calculated position and message.
+     * @throws LocationException if position cannot be determined.
+     * @throws MessageException if message cannot be reconstructed.
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    @Override
+    public ResponseDTO processTopSecretSplit() {
+<span class="fc" id="L125">        log.info(&quot;Procesando TopSecretSplit con {} satélites almacenados&quot;, splitSatellites.size());</span>
+<span class="fc" id="L126">        log.debug(&quot;Satélites disponibles: {}&quot;, splitSatellites.keySet());</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (splitSatellites.size() &lt; 3) {</span>
+<span class="fc" id="L129">            log.warn(&quot;Información insuficiente de satélites. Requeridos: 3, Disponibles: {}&quot;, splitSatellites.size());</span>
+<span class="fc" id="L130">            throw new LocationException(&quot;Información insuficiente de satélites.&quot;);</span>
+        }
+
+<span class="fc" id="L133">        List&lt;SatelliteDTO&gt; list = new ArrayList&lt;&gt;(splitSatellites.values());</span>
+<span class="fc" id="L134">        List&lt;Float&gt; distances = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L135">        List&lt;List&lt;String&gt;&gt; messages = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        for (SatelliteDTO sat : list) {</span>
+<span class="fc" id="L137">            distances.add(sat.getDistance());</span>
+<span class="fc" id="L138">            messages.add(sat.getMessage());</span>
+<span class="fc" id="L139">        }</span>
+
+<span class="fc" id="L141">        ResponseDTO response = getResponseDTO(distances, messages);</span>
+<span class="fc" id="L142">        log.info(&quot;TopSecretSplit procesado exitosamente. Limpiando caché de satélites.&quot;);</span>
+
+        // Clear stored satellite data after processing
+<span class="fc" id="L145">        splitSatellites.clear();</span>
+
+<span class="fc" id="L147">        return response;</span>
+    }
+
+    /**
+     * Reconstructs the message from arrays received by satellites.
+     *
+     * @param messages Arrays of words from satellites.
+     * @return The reconstructed message.
+     * @since 2025
+     * @author Emmanuel Arenilla (emmanueldevtest01@gmail.com)
+     */
+    private String getMessage(List&lt;List&lt;String&gt;&gt; messages) {
+<span class="fc" id="L159">        log.debug(&quot;Iniciando reconstrucción de mensaje con {} arrays&quot;, messages.size());</span>
+
+<span class="fc" id="L161">        int maxLen = messages.stream().mapToInt(List::size).max().orElse(0);</span>
+<span class="fc" id="L162">        log.debug(&quot;Longitud máxima de mensaje detectada: {}&quot;, maxLen);</span>
+
+<span class="fc" id="L164">        String[] result = new String[maxLen];</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">        for (int i = 0; i &lt; maxLen; i++) {</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">            for (List&lt;String&gt; msgArr : messages) {</span>
+<span class="pc bpc" id="L167" title="1 of 6 branches missed.">                if (i &lt; msgArr.size() &amp;&amp; msgArr.get(i) != null &amp;&amp; !msgArr.get(i).isBlank()) {</span>
+<span class="fc" id="L168">                    result[i] = msgArr.get(i);</span>
+<span class="fc" id="L169">                    log.trace(&quot;Posición {} completada con palabra: '{}'&quot;, i, result[i]);</span>
+<span class="fc" id="L170">                    break;</span>
+                }
+<span class="fc" id="L172">            }</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">            if (result[i] == null) result[i] = &quot;&quot;;</span>
+        }
+
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        String finalMessage = String.join(&quot; &quot;, Arrays.stream(result).filter(s -&gt; !s.isBlank()).toArray(String[]::new));</span>
+<span class="fc" id="L177">        log.debug(&quot;Mensaje reconstruido: '{}'&quot;, finalMessage);</span>
+
+<span class="fc" id="L179">        return finalMessage;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
